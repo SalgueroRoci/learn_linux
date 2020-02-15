@@ -4,3 +4,8 @@ Before going into linux, read this might help you understanding the relations be
 * [What is POSIX?](https://stackoverflow.com/questions/1780599/what-is-the-meaning-of-posix)
 * [History of Unix and Linux](https://www.oreilly.com/library/view/running-linux-third/156592469X/ch01s02.html)
 
+Linux Open Source GNU Licence since 1992 using GPL (General Public License) Major Linux Distros - Commercial Distros, or Community Distro
+
+
+
+
