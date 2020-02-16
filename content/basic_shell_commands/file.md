@@ -1,6 +1,16 @@
 # Manipulate Files
 In Linux, everything is file this includes Configurations, Sockets, Process ids, etc. Hence, knowing how to interact with file system is crucial for you. Here we separate the actions into different categories.
 
+### Creating a folder 
+```
+$ mkdir 
+
+# Creating a folder and it's parent directory if it doesn't exist
+$ mkdir -p /grandparent/parent/child
+
+# Create and change folder permission, similar to chmod
+$ mkdir -m a=rwx /folder
+```
 
 ## Show Files
 ### ls

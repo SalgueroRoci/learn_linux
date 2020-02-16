@@ -1,5 +1,52 @@
 # Network
-netstat - Monitor your network stats. Use grep to find a particular item netstat -tupnl | grep <port number>
+
+hostname & file 
+
+## Network Monitoring
+
+netstat
+port checking and running and kill
+https://stackoverflow.com/questions/3855127/find-and-kill-process-locking-port-3000-on-mac
+lsof
+tcpdump
+
+## Connectivity
+ping
+telnet
+network speed
+traceroute
+nslookup 
+
+## Security
+firewall-cmd
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
+iptables
+https://www.ibm.com/support/knowledgecenter/STXKQY_5.0.4/com.ibm.spectrum.scale.v5r04.doc/bl1adv_firewallportopenexamples.htm
+
+## Protocols
+
+In __/etc/services__ lists service names and the ports which they’re associated.  
+Common ports to know:
+| | |
+|-|-|
+|20/21 |FTP (file transfer protocol) |
+|22 |SSH (Secure Shell)|
+| 23 |Telnet|
+| 25 |SMTP |
+| 53 |DNS |
+| 67 | DHCP| 
+| 69 |TFTP|
+|80 |HTTP|
+|109/110 |POP|
+|113 |auth/ident|
+|389 |LDAP|
+|443 |HTTPS|
+|1521| Oracle Database|
+|3306 |MYSQL|
+|5800-5899 | VNC via HTTP|
+===
+
+netstat - Monitor your network stats. Use grep to find a particular item netstat -tupnl | grep <port number> 
 Ways to check what ports are running and what process IDs
 
 netstat -rn : should ip, and gateway.
@@ -51,17 +98,4 @@ telnet - Simple text-mode remote login program. Enables to connect to a remote s
 Still remains useful for connecting since you can pass a port number ei. telnet mail.example.com 25
 Telnet isnt useful for protocols using UDP
 
-In /etc/services - lists service names and the ports which they’re associated. Common ports to know:
-20/21 FTP (file transfer protocol) 22 SSH (Secure Shell)
-23 Telnet
-25 SMTP
-53 DNS
-67 DHCP
-69 TFTP
-80 HTTP
-109/110 POP
-113 auth/ident
-389 LDAP
-443 HTTPS
-3306 MYSQL
-5800-5899 VNC via HTTP
+

@@ -4,7 +4,7 @@ Before we start navigating the file system, we need to have the concept about wo
 ## Home Directory
 If you start your terminal, you will be in a directory. This directory is your "Home Directory". 
 In shell, "~" is used to represent your home directory. 
-([Teleport](http://www.linfo.org/home_directory.html))
+([Home Directory](http://www.linfo.org/home_directory.html))
 
 ## Working Directory
 After you log into your system, your working directory is your home directory. 
@@ -29,25 +29,25 @@ Physical path is the relative path of the file with the root directory (need dou
 | /usr/../usr/./ | you are actually in /usr/ |
 
 ### Other common symbols
-| | |
-|-|-|
+|Command | Description|
+| ----- |------|
 | > or < | redirects to a new command or file. |
 | '|' |is pipe to a new command. Output as input. |
 | ; | if you want to execute two commands in sequence but don’t want to pipe them together.|
 
 ### Wildcards
-| | |
-|-|-|
-| ? | represents a single character|
+|Command | Description|
+| ----- |------|
+| ? | represents a single character |
 |* | matches any char or set of characters including no char |
 
 ### Shell Types
-| | |
-|-|-|
+|Command | Description|
+| ----- |------|
 | $ or > |for ordinary users |
 | # | for root users|
 
-## Commands
+## Navigation Commands
 These commands will help you move around in shell.
 ### pwd
 Shows your working directory, which is your current directory.
@@ -62,8 +62,8 @@ In order to change your directory, you might want to read [_show files_](./navig
 
 Change directory
 
-| | |
-|-|-|
+|Command | Description|
+| ----- |------|
 | cd - | change to the previous working directory. |
 | cd ~ | change to home directory. |
 | cd / | change to root directory. |
@@ -82,16 +82,21 @@ List the contents of the directory, options allow to display different informati
 ```
 # outputs folders and files in current directory   
 $ ls
+
 # outputs folders and files in /home/user/Downloads directory  
 $ ls ~/Downloads
+
 # shows file or directory, size, modified date and time, file or folder name and owner of file and its permission. 
 $ ls -l 
 > -rw-r--r--. 1 root root   683 Aug 19 09:59 0001.pcap
+
 # shows hidden files in the current directory 
 $ ls -a 
+
 # shows sizes in human readable format.
 $ ls -lh 
 > -rw-r--r--. 1 root root  683 Aug 19 09:59 0001.pcap
+
 # will shows latest modification file or directory date as last. l file info, t time modified, r reverse order
 $ ls -ltr
 ```
@@ -99,10 +104,21 @@ $ ls -ltr
 ### Find Files
 Sometimes its hard to find a particular file in linux. Use these commands to locate files.  
 Searching
-find <location> -name “what to find”
+
+```
+# find <location> -name “what to find”
+$ sudo find / -name "filename.txt"
+
+# locate requires a database in linux
 locate <search string>
-whereis
-grep [option] pattern [file] : helps search in the files or outputs
+```
+
+#grep is a powerful search tool, can search thru files, command outputs etc. To learn more read about it in ![grep](./content/file.md)
+```
+grep [options] pattern [file] # helps search in the files or outputs
+$ grep "this" demo_file
+```
+
 
 
 ### Clear your terminal 
