@@ -52,7 +52,7 @@ These commands will help you move around in shell.
 ### pwd
 Shows your working directory, which is your current directory.
 
-```
+```bash
 user:~$ pwd
 /home/usr
 ```
@@ -79,7 +79,7 @@ Tip: use tab to auto complete, click tab twice will show you the contents in ent
 ### List Contents
 List the contents of the directory, options allow to display different information.
 
-```
+```bash
 # outputs folders and files in current directory   
 $ ls
 
@@ -105,7 +105,7 @@ $ ls -ltr
 Sometimes its hard to find a particular file in linux. Use these commands to locate files.  
 Searching
 
-```
+```bash
 # find <location> -name “what to find”
 $ sudo find / -name "filename.txt"
 
@@ -114,7 +114,7 @@ locate <search string>
 ```
 
 #grep is a powerful search tool, can search thru files, command outputs etc. To learn more read about it in ![grep](./content/file.md)
-```
+```bash
 grep [options] pattern [file] # helps search in the files or outputs
 $ grep "this" demo_file
 ```

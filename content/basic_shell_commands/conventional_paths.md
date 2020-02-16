@@ -15,7 +15,7 @@ Common File System hierarchy
 
 ### Getting Help on a Command:
 Many Linux commands have a lot of option flags and usage. To find out information or help page of linux commands use these: 
-```
+```bash
 <command> --help 
 man <command> 
 info <command> 
@@ -25,7 +25,7 @@ whereis <command>
 ```
 
 These options can also output help information:  
-```
+```bash
 <command> -v            # verbose 
 <command> --help
 <command> --version
@@ -33,7 +33,7 @@ These options can also output help information:
  
 ## Alias
 In linux if you have certain commands that you use commonly, you can create aliases to create shorter versions of the commands and options. Set up a customized command for the commands or can make an alias for a set of commands.
-```
+```bash
 # alias <newvalue>='<command>'
 alias ls ='ls -la'
 # unalias remove alias

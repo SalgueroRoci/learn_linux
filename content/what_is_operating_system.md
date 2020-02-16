@@ -114,7 +114,7 @@ showrev -p                # show all the patches made on the machine.
 showrev -p | grep <keyword>
 ```
 
-**Different package managers: rpm, yum, dpkg, apt-get**
+**Different package managers: rpm, yum, dpkg, apt-get**   
 Find the package in RedHat
 ```
 yum whatprovides libgtk-x11-2.0.so.0

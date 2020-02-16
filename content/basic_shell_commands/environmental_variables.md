@@ -4,8 +4,8 @@ Are variables stored in your linux shell, usually to help customize system or eh
 ## Setting Environmental Variables
 Virtual location of the program and the resources available to it. Useful for multiple
 programs, for one use program configuration
-```
-# <Variable name>=“value” : create a variable for the environment echo $<variable name>
+```bash
+# create a variable for the environment 
 $ KEY=value
 $ KEY="Some other value"
 $ KEY=value1:value2
@@ -17,7 +17,7 @@ $ KEY=value1:value2
 
 ## Exporting Variables
 After the Environment Variable been set can display or use: 
-```
+```bash
 # shows the value of the variable. Example echo $SHELL shows the current shell location.
 $ echo <variable> 
 
@@ -35,7 +35,7 @@ $ source <env variable>
 ```
 
 View your environment variables:
-```
+```bash
 $ env | less
 $ set | less
 ```

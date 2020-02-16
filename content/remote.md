@@ -3,12 +3,12 @@
 
 SSH is used to connect to remote hosts. After you made sure you have connectivity to a machine (intranet, internet, or VPN) you can remotely connect to different servers.  
 
-Old way, telnet is the unencrypted remote access utility now mostly used to troubleshoot connectivity. Read more under ![networking section](./network.md).  
+Old way, telnet is the unencrypted remote access utility now mostly used to troubleshoot connectivity. Read more under [networking section](./network.md).  
 Modern way, SSH (Secure Shell) is an encrypted protocol to remotely access your machine, and uses port 22.  
 
 ## SSH Keys
 
-SSH requires private and public keys in order to connect remotely to machines. Public keys will be located on the destination hosts, while the private keys will kept to the machine requesting the remote access.  
+SSH requires _private_ and _public_ keys in order to connect remotely to machines. Public keys will be located on the destination hosts, while the private keys will kept to the machine requesting the remote access.  
 
 Local Computer [private key] -> Remote Host [public key]  
 
@@ -25,8 +25,8 @@ $ ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -C ‘’ -N ''
 * Omitting the -N ‘’ will prompt for password which would be necessary when you access system.
 
 Then you need to add your **public** key to the remote hosts. __Never share your private keys since that is your identification!!__  
-If using the cloud you can add your public key on creation in order to access initially.  
 
+If using the cloud you can add your public key on creation in order to access initially.  
 To add more public keys to remote hosts, apend them to the authorized keys file.  
 ```shell
 $ cd ~/.ssh/authorized_keys
@@ -42,8 +42,8 @@ $ cat ~/.ssh/id_rsa.pub | pbcopy
 SSH keys should have proper file permissions. 
 
 ```
-$ chmod 600 <private key>
-$ chmod 644 <public key>
+$ chmod 600 private_key
+$ chmod 644 public_key
 ```
 
 ### Adding SSH key to new user
@@ -51,11 +51,11 @@ $ chmod 644 <public key>
 When connectin to remote host you specify the user you want to connect to. If you don't want to connect to root or other sudo users you can create a new user and add the public ssh key to connect. 
 ```bash
 # Create a new user
-$ sudo adduser <new_user>
-$ sudo adduser <new_user> --disabled-password     #disable password for user
+$ sudo adduser new_user
+$ sudo adduser new_user --disabled-password     #disable password for user
 
 #Change to new user
-$ sudo su - <new user>
+$ sudo su - new_user
 
 #Make an ssh directory
 $ mkdir .ssh
@@ -77,7 +77,7 @@ After managing your ssh keys you can now access using it.
 $ ssh username@IP_or_hostname
 
 # specify the private key
-$ ssh -i <path to key file> username@IP_or_hostname
+$ ssh -i path_to_key_file username@IP_or_hostname
 
 # used to see the outputs of connecting to the server
 $ ssh -verbose username@IP_or_hostname
@@ -102,7 +102,7 @@ $ ssh -o ProxyCommand="ssh -W %h:%p username@bastion_ip" username@remote_host_ip
 
 If you require access to other ports on remote hosts, use port forwarding. 
 
-![Using Putty](https://www.skyverge.com/blog/how-to-set-up-an-ssh-tunnel-with-putty/) 
+[Using Putty](https://www.skyverge.com/blog/how-to-set-up-an-ssh-tunnel-with-putty/) 
 
 ```bash
 # local version
@@ -154,9 +154,10 @@ $ vncserver start :1
 
 **Connect to the GUI using VNC viewer**
 ```bash
-$ ssh -L 5901:localhost:5901 username@host_ip
 # port-forward to remote host
-ssh -i <private/key> -L 5901:localhost:5901 opc@<ip address> -N & 
+$ ssh -L 5901:localhost:5901 username@host_ip
+$ ssh -i private/key -L 5901:localhost:5901 opc@ip_or_host_address -N & 
+
 # or with bastion
 ssh -L 5901:remote_private_ip:5901 username@Bastion_server_IP
 
@@ -170,29 +171,29 @@ Using X Programs Remotely
 https://docs.cloud.oracle.com/en-us/iaas/Content/Resources/Assets/whitepapers/run-graphical-apps-securely-on-oci.pdf
 Setting up for X11 Port forwarding for GUI Programs
 Use xTerm or xQuartz
-#Set display variable =========
-# the variable should auto set
-# when you ssh -Y oracle@ip
-sudo yum install unzip bind-utils bc rng-tools xauth xterm xdpyinfo dbus-x11 -y
+#### Set display variable 
+```bash
+# the variable should auto set when you ssh -Y oracle@ip
+$ sudo yum install unzip bind-utils bc rng-tools xauth xterm xdpyinfo dbus-x11 -y
+
 # Enable X11 forwarding in /etc/ssh/sshd_config sudo grep ‘^X11’ /etc/ssh/sshd_config
 # these should be the settings
 # X11Forwarding yes
 # X11UseLocalhost no
 # if you don’t get above settings, edit sshd_config sudo vi /etc/ssh/sshd_config
-# reload
-sudo systemctl reload sshd
-ps -ef | grep sshd
-# use the pid from above command’s result sudo kill -HUP <pid>
-#=======END Set display variable =====
 
-SSH and using GUI based application. Can use this command to enable: ssh -Y <user>@<remote host address>
-ssh -XY <user>@<remote host address>
-Run Graphical Programs Remotely from a linux server
-https://uisapp2.iu.edu/confluence-prd/pages/viewpage.action?pageId=280461906
-xterm
-install: sudo apt-get update -y sudo apt-get install -y xterm run: ssh -X <user>@<host ip>
-xQuartz for Mac similar to xterm.
- Terminal emulator fot the X windows system.
+# reload
+$ sudo systemctl reload sshd
+$ ps -ef | grep sshd
+# use the pid from above command’s result sudo kill -HUP <pid>
+```
+
+SSH and using GUI based application. 
+Run in xQuarts (MacOS) or xterm (windows)
+```bash
+$ ssh -Y <user>@<remote host address>
+$ ssh -XY <user>@<remote host address>
+```
 
 ## Other Remote Protocols
 ### Secure Copy Protocol
@@ -281,7 +282,7 @@ $ openssl x509 -req -days 365 -in  012.345.678.90.csr -signkey  012.345.678.90.k
 
 ## Linux Screen
 Linux Screen is useful tool to keep programs running on remote servers even after session terminates.  
-![Learn More Here](https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/)
+[Learn More Here](https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/)
 
    
 
