@@ -14,7 +14,7 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 - [File Search & Maniputlation](./content/basic_shell_commands/file.md) 
 - [Environmental Variables](./content/basic_shell_commands/environmental_variables.md)
 
-[User / Group](./content/user_group.md)
+[User / Group](./content/user_group_and_file_access.md)
 
 [Process](./content/process.md)
 
@@ -22,10 +22,8 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 
 [Disk Management](./content/volume.md)
 
-[Regex](./content/regex.md)
+[Remote Host](./content/remote.md)
 
-[Remote Host](./content/ssh.md)
+[Vim](./content/images/Vim_Basics.pdf)
 
-[Vim](./content/vim.md)
-
-[Bash Scripting]()
+[Bash Scripting](./content/bash.md)

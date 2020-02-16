@@ -6,6 +6,3 @@ Before going into linux, read this might help you understanding the relations be
 
 Linux Open Source GNU Licence since 1992 using GPL (General Public License) Major Linux Distros - Commercial Distros, or Community Distro
 
-
-
-
