@@ -44,6 +44,9 @@ Common ports to know:
 |1521| Oracle Database|
 |3306 |MYSQL|
 |5800-5899 | VNC via HTTP|
+
+
+
 ===
 
 netstat - Monitor your network stats. Use grep to find a particular item netstat -tupnl | grep <port number> 

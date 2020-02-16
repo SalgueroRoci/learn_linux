@@ -134,6 +134,8 @@ $ vncpassd
 $ vncserver -kill :1 
 $ cp ~/.vnc/xstartup nano ~/.vnc/xstartup.bak
 $ vi ~/.vnc/xstartup
+# or replaceall<USER> values with the user you'll use. (opc)
+$ sudo vim /etc/systemd/system/vncserver@\:1.service
 
 # open firewalls
 $ sudo firewall-cmd --zone=public --add-service=vnc-server --permanent
@@ -235,7 +237,7 @@ CentOS 7
 $ yum install vsftpd ftp -y
 $ vi /etc/vsftpd/vsftpd.conf
 
-# Make changes:
+# Make changes =========
 ## Disable anonymous login ##
 anonymous_enable=NO
 
@@ -248,11 +250,11 @@ ftpd_banner=Welcome to UNIXMEN FTP service.
 
 ## Add at the end of this  file ##
 use_localtime=YES
-# =============
+# =======================
 
 # Re-enable service
 $ systemctl enable vsftpd
-$ ystemctl start vsftpd
+$ systemctl start vsftpd
 
 # Open right ports 
 $ firewall-cmd --permanent --add-port=21/tcp
