@@ -16,7 +16,7 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 
 [User / Group](./content/user_group_and_file_access.md) * 
 
-[Process](./content/process.md) * 
+[Process](./content/process.md) 
 
 [Network](./content/network.md) * 
 
