@@ -107,32 +107,9 @@ How to Manage and Create LVM Using vgcreate, lvcreate and lvextend Command
 https://www.tecmint.com/manage-and-create-lvm-parition-using-vgcreate-lvcreate-and- lvextend/
 Logical Volume Management - Allows logical divisions to be resized (reduced or increased)
 
-Structure:
-One or more entire HD are configured as physical volumes
-Volume group is created using one or more physical volumes. VG as a single storage unit
-Multiple logical volumes can be
-Creating Physical Volumes, Volume Groups, and Logical Volumes
-Physical volumes :
-pvcreate /dev/sdb /dev/sdc - creates a new physical volume pvs lists newly created PVs
-pvdisplay /dev/sdX - get detaild info of each PV
-To create a volume group named vg00 using /dev/sdX vgcreate vg00 /dev/sdb
-vgdisplay vg00 - view information about this volume group
-Logical Volumes
-lvcreate -n vol_projects -L 10G vg00 lvcreate -n vol_backups -l 100%FREE vg00 lvs - list logical volumes with basic info lvdisplay - for more detailed information lvdisplay vg00/vol_projects
+### Logical Volume Groups
 
-Next we can make filesystem as ext4 since it allows resizing. mkfs.ext4 /dev/vg00/vol_projects
-mkfs.ext4 /dev/vg00/vol_backups
-Resizing Logical Volumes/Extending
-Example on resizing to have vol_backups have more space while reducing vol_projects
-# lvreduce -L -2.5G -r /dev/vg00/vol_projects
-# lvextend -l +100%FREE -r /dev/vg00/vol_backups
-The - and + while resizing logical volumes.
-vgextend vg00 /dev/sdd
-vgdisplay vg00 - Will show the new extension
-Mounting LV on Boot and on Demand Requires UUID. To get the UUID use
-blkid /dev/vg00/vol_projects blkid /dev/vg00/vol_backups
-Create the mount points for each LV mkdir /home/projects
-mkdir /home/backups
+ 
    
 Edit the fstab file
 UUID=b85df913-580f-461c-844f-546d8cde4646 /home/projects ext4 defaults 0 0 UUID=e1929239-5087-44b1-9396-53e09db6eb9e /home/backups ext4 defaults 0 0

@@ -108,7 +108,7 @@ cat file1 file2 > file3
 cat > file
 # you can copy paste your file to the stdin at this time and hit ctrl + d to have everything casted into the file
 ```
-### pbcopy 
+
 
 here we mentioned [pipeline redirection](), you can click on the link to 
 ### less
@@ -129,19 +129,21 @@ tail -f <file path> : Will auto update the output if the file changes.
 tail: Shows the last 10 lines. -n to change line amount. -f to follow the file as it grows. expand/unexpand:
 file <filename> : shows the file type os the file.
 
+### pbcopy 
+
 ## Archive Files
 Zip and Backup Utilities:
 Tar files:
 tar --extract --verbose --gunzip --file samba-3.2.11.tar.gz : extracting files tar xvzf samba-3.2.11.tar.gz
 tar cvzf my-stuff.tgz my-stuff-dir : making a tar file
 
-## Permissions 
+## Permissions
+explain file permissions 
 chmod <permission> <filename> : changes the permissions for owner, group, others. Can use numbers from binary numbers or ugo+rwx
 chown <new owner>:<new group> <filename> : Changes the owner of the file.
 chgrp <group> <filename> : change
 
-## Outputs
-cat
+
 
 ### More Text Manipulation
 stdout: $ echo Hello World > peanuts.txt : > redirection operator >> will append to the file instead of overriding it
@@ -152,8 +154,6 @@ $ ls /fake/directory 2> peanuts.txt to redirect stderr to a file peanut.txt
 pipe and tee: $ ls -la /etc | less allows us to get the stdout of a command and make that the stdin to another process.
 
 cut: helps with cutting out text from a file
-
-
 paste: command is similar to the cat command, it merges lines together in a file.
 
 join/split: files

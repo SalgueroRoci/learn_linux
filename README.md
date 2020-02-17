@@ -14,13 +14,13 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 - [File Search & Maniputlation](./content/basic_shell_commands/file.md) *
 - [Environmental Variables](./content/basic_shell_commands/environmental_variables.md)
 
-[User / Group](./content/user_group_and_file_access.md) * 
-
 [Process](./content/process.md) 
 
-[Network](./content/network.md) * 
+[User / Group](./content/user_group_and_file_access.md) 
 
 [Disk Management](./content/volume.md) * 
+
+[Network](./content/network.md)  
 
 [Remote Host](./content/remote.md) 
 

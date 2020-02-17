@@ -13,7 +13,10 @@ To run: ./<filename> or bash <filename> or sh <filename>
 $ chmod +x mybash.sh
 $ ./mybash
 $ sh mybash.sh
-```
+``` 
+
+Following command you can run remote command to another user:  
+`sudo runuser -l root -c 'sudo echo JAVA_HOME="/home/opc/jdk1.8.0_191" >> /etc/environment;sudo echo APP_JAVA_HOME="/home/opc/jdk1.8.0_191" >> /etc/environment'`
 
 Reference
 https://bash.cyberciti.biz/guide/Main_Page

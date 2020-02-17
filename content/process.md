@@ -5,9 +5,9 @@ Processes are programs running on your linux machine
 ### Look at your processes
 ```bash
 $ ps 
-$ ps -ef | grep cron    # search if cron is running 
-$ ps -auf <process>     # searches all the processes similar name to cron
-$ ps -u <user> —forest  # shows the process tree for user.
+$ ps -ef | grep cron        # search if cron is running 
+$ ps -auf <process>         # searches all the processes similar name to cron
+$ ps -u <user> —forest      # shows the process tree for user.
 ```
 
 ### Killing Processes
@@ -21,7 +21,7 @@ $ killall <name>              # kill all processes with name.
 When you run a program, so you can use your terminal after running command you can run the process in the background. 
 
 Controlling Foreground and Background Processes  
-| | |
+| Command | Description |
 |-|-|
 |Ctrl + Z  | stops the process|
 | fg <job id> | Makes the job go onto the foreground |
@@ -30,7 +30,7 @@ Controlling Foreground and Background Processes
 | <program starting command> & | will make the program launch to the background |
 | nohup <command> & | Run a Command or Shell-Script Even after You Logout unlike background which will kill the process after you logout|
 | nohup command >/dev/null 2>&1 | Doesn't create nohup.out |
-|--|--|
+
 
 ### Monitoring System Statistics
 __iostat__ - Gives you information about the disk. Disk addresses, cpu wait times, and network. Monitory disk input output stats.  
