@@ -11,7 +11,7 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 
 - [Navigate](./content/basic_shell_commands/navigate.md)
 - [Paths and Info Commands](./content/basic_shell_commands/conventional_paths.md)
-- [File Search & Maniputlation](./content/basic_shell_commands/file.md) *
+- [File Search & Maniputlation](./content/basic_shell_commands/file.md) 
 - [Environmental Variables](./content/basic_shell_commands/environmental_variables.md)
 
 [Process](./content/process.md) 
@@ -22,7 +22,7 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 
 [Network](./content/network.md)  
 
-[Remote Host](./content/remote.md) 
+[Remote Host](./content/remote.md) *VNC
 
 [Vim](./content/images/Vim_Basics.pdf)
 

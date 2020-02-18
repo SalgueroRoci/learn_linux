@@ -76,3 +76,44 @@ Sudo allows users to run commands as superuser. Root user having the highest per
 $ usermod -aG sudo username
 $ tail -n 10 /etc/sudoers
 ```
+
+## Permissions
+Each file and folder has permissions for users, groups, and others.  
+* Users - owner of the file / directory. default creator
+* Group - all users belonging to group will have access  
+* Other - Other users not owners or part of the group   
+
+Example:
+```bash
+$ ls -l
+> drwxr-xr-x  1 <user> <group>  2694 Dec  5 16:42 <filename>
+```
+
+| Dir, Link, or File bit | User | Group | Other |
+|-|-|-|-|
+|d|rwx|r-x|r-x|
+
+**permissions**
+* r - read - 1
+* w - write - 2
+* x -  execute - 4
+
+add the numbers and concet for user , group, others example:  
+rwxr-xr-x = (1+2+3)+(1+4)+(1+4) = 755
+
+```bash
+# changes the permissions for owner, group, others. Can use numbers from binary numbers or ugo+rwx
+$ chmod <permission> <filename> 
+$ chmod ugo+r <filename>
+$ chmod o+x <filename>
+$ chmod 600 <filename>
+$ chmod -R +r <directory>           # recursive
+
+# Changes the owner of the file.
+$ chown <new owner>:<new group> <filename> 
+$ chown user:root <filename>
+$ chown -R user:root <directory>    # recursive
+
+# change the group of the file 
+$ chgrp <group> <filename> 
+```
