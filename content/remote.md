@@ -119,52 +119,116 @@ $ ssh -L 7001:remote_private_ip:7001 username@Bastion_server_IP
 
 #### VNC Viewer 
 Can also be used for VNC viewer to connect to the GUI of a remote host for linux. 
-Windows uses RDP.  
+Windows uses RDP. RDP should already be enabled on windows servers. 
 
-First you need to set up vncserver on remote host 
+First you need to set up vncserver on remote host:  
+
+**CentOS/redhat version**
 ```bash
-$ sudo yum install tigervnc-server
-$ sudo apt-get install vnc4server
+# optional add a new user to log in with
+$ useradd -m -s /bin/bash <newuser>
+$ passwd <newuser>
 
-# Configure the service
-$ vncserver
-$ vncpassd
+# install vnc server
+$ sudo yum install tigervnc-server 
 
-# edit start up config 
-$ vncserver -kill :1 
-$ cp ~/.vnc/xstartup nano ~/.vnc/xstartup.bak
-$ vi ~/.vnc/xstartup
-# or replaceall<USER> values with the user you'll use. (opc)
-$ sudo vim /etc/systemd/system/vncserver@\:1.service
+# set up vncpassword for user
+$ sudo su - <newuser>
+$ vncpasswd
+
+# Configure the service file
+$ sudo vncserver -kill :1
+$ sudo cp /lib/systemd/system/vncserver@.service  /lib/systemd/system/vncserver@:1.service
+# replace <USER> with your user you created
+$ sudo sed 's/<USER>/newuser/g' /lib/systemd/system/vncserver@\:1.service
 
 # open firewalls
-$ sudo firewall-cmd --zone=public --add-service=vnc-server --permanent
 $ sudo firewall-cmd --zone=public --add-port=5901/tcp --permanent
 $ sudo firewall-cmd --reload
 
-# install desktop environment varies from OS
-$ sudo yum groupinstall "server with gui"  
-$ sudo apt-get install mate-desktop-environment-core
+# restart the vncserver to apply changes, have to be logged into your corresponding user
+$ sudo vncserver :1
 
-# restart vnc server 
-$ systemctl daemon-reload
-$ sudo systemctl start vncserver@\:1.service 
-$ sudo systemctl enable vncserver@\:1.service
-# or 
-$ vncserver start :1
+# check if vnc server is running
+$ ss -tulpn| grep vnc
+
+# install desktop environment varies from OS
+$ sudo yum groupinstall "server with gui" 
+$ sudo systemctl set-default graphical.target 
+
+# reload the vncserver
+$ vncserver -kill :1
+$ vncserver :1
 ```
+[other way using XFCE Desktop](https://vitux.com/centos-vnc-server/)  
+
+**Ubuntu/Debian version**
+[link](https://medium.com/@0xson/running-ubuntu-desktop-gui-aws-ec2-instance-on-windows-3d4d070da434)  
+
+```bash
+# optional add a new user to log in with
+$ useradd -m -s /bin/bash <newuser>
+$ passwd <newuser>
+
+# install desktop
+$ sudo apt-get install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+
+# install vnc server 
+$ sudo apt install xserver-xorg-core
+$ sudo apt install tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
+
+# open firewalls
+$ sudo apt-get install firewalld
+$ sudo firewall-cmd --zone=public --add-port=5901/tcp --permanent
+$ sudo firewall-cmd --reload
+
+# set password
+$ sudo su - newuser
+$ vncpasswd
+$ vncserver :1
+
+# Edit configuration as vncserver is running
+$ cp ~/.vnc/xstartup ~/.vnc/xstartup.bak
+$ vi ~/.vnc/xstartup
+## ====append the following====
+# Uncomment the following two lines for normal desktop:
+# unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
+
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+x-window-manager &
+
+gnome-panel &
+gnome-settings-daemon &
+metacity &
+nautilus &
+## =============================
+
+# start the vnc server as user
+$ vncserver -kill :1
+$ vncserver :1
+
+# check vncserver running
+$ ss -tulpn| grep vnc
+
+```
+
 
 **Connect to the GUI using VNC viewer**
 ```bash
 # port-forward to remote host
-$ ssh -L 5901:localhost:5901 username@host_ip
-$ ssh -i private/key -L 5901:localhost:5901 opc@ip_or_host_address -N & 
+$ ssh -L 5901:localhost:5901 username@ip_or_host_address
+$ ssh -i private/key -L 5901:localhost:5901 user@ip_or_host_address -N & 
 
 # or with bastion
 ssh -L 5901:remote_private_ip:5901 username@Bastion_server_IP
 
 # Connect using VNC
-localhost:5901
+address: localhost:5901
 ```
 
 ### Using X Programs

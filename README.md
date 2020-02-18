@@ -22,7 +22,7 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 
 [Network](./content/network.md)  
 
-[Remote Host](./content/remote.md) *VNC
+[Remote Host](./content/remote.md) 
 
 [Vim](./content/images/Vim_Basics.pdf)
 
