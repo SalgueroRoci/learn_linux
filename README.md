@@ -18,7 +18,7 @@ Written notes are all the common commands in linuc to use this repo as a guide t
 
 [User / Group](./content/user_group_and_file_access.md) 
 
-[Disk Management](./content/volume.md) * 
+[Disk Management](./content/volume.md) 
 
 [Network](./content/network.md)  
 
