@@ -1,4 +1,4 @@
-# ssh
+# SSH
 [What is SSH](https://www.ssh.com/ssh/protocol/)
 
 SSH is used to connect to remote hosts. After you made sure you have connectivity to a machine (intranet, internet, or VPN) you can remotely connect to different servers.  
@@ -17,7 +17,7 @@ You need to generate SSH keys in order to connect remotely using ssh.
 ```shell
 # Generate the private and corresponding public key
 # ssh-keygen -q -t <encrypt type> -f <location & name> -C <comment> -N <passphrase>
-$ ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -C ‘’ -N ''
+$ ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -C '' -N ''
 
 > id_rsa        # private key
 > id_rsa.pub    # public key
@@ -25,6 +25,33 @@ $ ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -C ‘’ -N ''
 * Omitting the -N ‘’ will prompt for password which would be necessary when you access system.
 
 Then you need to add your **public** key to the remote hosts. __Never share your private keys since that is your identification!!__  
+
+### Using Putty
+Putty has different types of ssh key types. It also has ways to convert keys to __OpenSSH__ if needed.  
+<img src="./images/puttygen.png" width="300">   
+
+Creating a public and private keys using putty gen:  
+[Tutorial Here](https://www.ssh.com/ssh/putty/windows/puttygen)
+1. Open Putty Generator 
+2. Choose RSA key type, and bits to generate: 2048
+3. Once generated click on 'Save public key' and 'Save private key'. This will save RSA ssh keys.  
+    1. Private key will be in .ppk format that is used with Putty to connect. 
+
+If you require OpenSSH type keys:  
+[Tutorial Here](https://www.simplified.guide/putty/convert-ppk-to-ssh-key)
+1. **Public Key:** copy inside the _'Public key for pasting into OpenSSH authorized_keys file'_ . Open notepad and paste. Save with a __.pub__ extension.  
+2. **Private Key:** Click on _'Conversions'_ then click on _'Export OpenSSH key'_, save file with no extension. 
+```bash
+> opensshkey_public.pub
+> opensshkey_private
+```
+
+Convert OpenSSH to ppk file for Putty connections:  
+[Tutorial Here](https://docs.oracle.com/en/cloud/paas/goldengate-cloud/tutorial-change-private-key-format/)
+1. Open Putty Generator
+2. Click Load and load the private key. Have the finder show all files in needed. 
+3. Click on 'Save private key' and save as a .ppk file. 
+
 
 If using the cloud you can add your public key on creation in order to access initially.  
 To add more public keys to remote hosts, apend them to the authorized keys file.  
