@@ -129,7 +129,7 @@ $ ssh -o ProxyCommand="ssh -W %h:%p username@bastion_ip" username@remote_host_ip
 
 If you require access to other ports on remote hosts, use port forwarding. 
 
-[Using Putty](https://www.skyverge.com/blog/how-to-set-up-an-ssh-tunnel-with-putty/) 
+[Using Putty](https://www.skyverge.com/blog/how-to-set-up-an-ssh-tunnel-with-putty/) [2](https://blog.devolutions.net/2017/4/how-to-configure-an-ssh-tunnel-on-putty)
 
 ```bash
 # local version
@@ -372,6 +372,36 @@ $ openssl req -new -key 012.345.678.90.key -out 012.345.678.90.csr
 # Create the Certificate (CRT) - Public SSL certificate used to encrypt
 $ openssl x509 -req -days 365 -in  012.345.678.90.csr -signkey  012.345.678.90.key -out 012.345.678.90.crt
 ```
+
+### OpenSSL VPN 
+
+An alternative to using IPSec protocol for VPN ( Virtual private network ) connectivity is using OpenSSL. You can install OpenSSL onto an instance on the cloud and connect to that cloud network the same as you would with IPSec. 
+
+Ports used: 
+* 22/TCP - SSH
+* 443/TCP - OpenVPN TCP connection
+* 943/TCP - OpenVPN Web-UI
+* 1194/UDP - OpenVPN UDP Port
+
+Install OpenVPN from their [website](https://openvpn.net/)
+
+Once installed it would configure the application. Use `$ passwd openvpn ` to change the admin password.  
+
+Access the admin console using your browser. URL https://public-ip:943/admin. **NOTE:** Make sure you are using HTTPS.  
+
+Once logged in:
+* In Network settings - replace 'Hostname or IP address' with public IP of instance. 
+* In VPN settings - add private address range in Routing section 
+* Enable traffic be routed through VPN
+* Update DNS servers used 
+* In Advanced VPN settings - 'Should clients be able to communicate with each other on the VPN IP Network?' set to Yes.
+Save and update server
+
+Access the client program to download using the https://public-ip:943 URL. 
+
+After connecting you should have VPN access. 
+
+[Alternative way](https://www.cyberciti.biz/faq/centos-7-0-set-up-openvpn-server-in-5-minutes/)
 
 ## Linux Screen
 Linux Screen is useful tool to keep programs running on remote servers even after session terminates.  

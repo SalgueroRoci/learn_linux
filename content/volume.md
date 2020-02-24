@@ -198,3 +198,7 @@ $ vi /etc/fstab
 # Finally delete the actual swap file:
 $ sudo rm /swapfile
 ```
+
+## File Sharing
+
+You can share files between machines even from linux to Windows and vice versa: [info](https://www.howtogeek.com/176471/how-to-share-files-between-windows-and-linux/)
