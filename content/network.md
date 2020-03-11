@@ -54,6 +54,12 @@ $ telnet hodt_ip 22
 * Telnet isnt useful for protocols using UDP
 * Useful if ping if disabled or blocked
 
+#### Netcat(nc) 
+Computer networking utility for reading from and writing to network connections using TCP or UDP.
+```bash
+$ nc -zv hostname.company.com 80
+$ nc -zv google.com 443
+```
 
 #### traceroute 
 Is used to see the route of the packet. Sends a series of test packets to each computer between your system and specified target system.  
