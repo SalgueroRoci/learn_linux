@@ -8,6 +8,7 @@ $ ps
 $ ps -ef | grep cron        # search if cron is running 
 $ ps -auf <process>         # searches all the processes similar name to cron
 $ ps -u <user> —forest      # shows the process tree for user.
+$ pgrep <phrase>            # searches for process with phrase and returns ID
 ```
 
 ### Killing Processes
