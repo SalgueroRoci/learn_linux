@@ -140,6 +140,9 @@ $ ssh -L 80:localhost:80 username@host_ip
 # ssh -L <localport>:<private private IP>:<destination port on application> <user>@<Bastion server IP>
 $ ssh -L 7001:remote_private_ip:7001 username@Bastion_server_IP
 
+$ ssh -J <bastion>@<bastion_IP> <remote>@<private_IP> -L <localport>:localhost:<destination port on application>
+$ ssh -J bastion_user@public_IP remote_user@private_IP -L 7001:localhost:7001
+
 # Then navigate to using browser: 
 # http://localhost:7001 http://localhost:<localport>
 ```
@@ -252,7 +255,10 @@ $ ssh -L 5901:localhost:5901 username@ip_or_host_address
 $ ssh -i private/key -L 5901:localhost:5901 user@ip_or_host_address -N & 
 
 # or with bastion
-ssh -L 5901:remote_private_ip:5901 username@Bastion_server_IP
+$ ssh -L 5901:remote_private_ip:5901 username@Bastion_server_IP
+# or 
+$ ssh -J <bastion>@<bastion_IP> <remote>@<private_IP> -L <localport>:localhost:<destination port on application>
+$ ssh -J bastion_user@public_IP remote_user@private_IP -L 7001:localhost:7001
 
 # Connect using VNC
 address: localhost:5901
