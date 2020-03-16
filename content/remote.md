@@ -193,7 +193,7 @@ $ vncserver :1
 [other way using XFCE Desktop](https://vitux.com/centos-vnc-server/)  
 
 **Ubuntu/Debian version**
-[link](https://medium.com/@0xson/running-ubuntu-desktop-gui-aws-ec2-instance-on-windows-3d4d070da434)  
+[link](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-18-04)  
 
 ```bash
 # optional add a new user to log in with
