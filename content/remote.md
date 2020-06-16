@@ -377,6 +377,9 @@ $ openssl req -new -key 012.345.678.90.key -out 012.345.678.90.csr
 
 # Create the Certificate (CRT) - Public SSL certificate used to encrypt
 $ openssl x509 -req -days 365 -in  012.345.678.90.csr -signkey  012.345.678.90.key -out 012.345.678.90.crt
+
+# Convert pem + key to crt 
+$ openssl x509 -outform der -in your-cert.pem -out your-cert.crt
 ```
 
 ### OpenSSL VPN 
